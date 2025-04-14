@@ -18,7 +18,8 @@ app.get('/render', async (req, res) => {
         headless: "new",
         args: ["--no-sandbox", "--disable-setuid-sandbox"]
       });
-      
+
+    console.log(`Cargando la página: ${url}`);
     const page = await browser.newPage();
     //page.setDefaultNavigationTimeout(60000);
 
