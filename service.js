@@ -23,7 +23,7 @@ app.get('/render', async (req, res) => {
 
     // Navega a la URL proporcionada
     console.log(`Cargando la página: ${url}`);
-    await page.goto(url, { waitUntil: 'networkidle2' }); // Espera a que la página cargue completamente
+    await page.goto(url, { timeout: 0, waitUntil: 'networkidle2' }); // Espera a que la página cargue completamente
 
     // Espera un tiempo para que el JavaScript (como el model-viewer) se ejecute
     await new Promise(resolve => setTimeout(resolve, 5000)); // Ajusta el tiempo según lo que tarde en cargar el model-viewer
