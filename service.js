@@ -27,7 +27,7 @@ app.get('/render', async (req, res) => {
     await page.goto(url, { timeout: 0, waitUntil: 'networkidle2' }); // Espera a que la página cargue completamente
 
     // Espera un tiempo para que el JavaScript (como el model-viewer) se ejecute
-    await new Promise(resolve => setTimeout(resolve, 10000)); // Ajusta el tiempo según lo que tarde en cargar el model-viewer
+    //await new Promise(resolve => setTimeout(resolve, 10000)); // Ajusta el tiempo según lo que tarde en cargar el model-viewer
 
     // Opcional: Captura una captura de pantalla de la página
     const screenshot = await page.screenshot({ fullPage: true });
