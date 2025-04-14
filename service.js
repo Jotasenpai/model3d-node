@@ -14,7 +14,11 @@ app.get('/render', async (req, res) => {
 
   try {
     // Lanza Puppeteer
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+        headless: "new",
+        args: ["--no-sandbox", "--disable-setuid-sandbox"]
+      });
+      
     const page = await browser.newPage();
 
     // Navega a la URL proporcionada
