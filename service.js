@@ -29,7 +29,7 @@ app.get('/render', async (req, res) => {
     console.log(`Goto pagina`);
 
     // Espera un tiempo para que el JavaScript (como el model-viewer) se ejecute
-    await new Promise(resolve => setTimeout(resolve, 60000)); // Ajusta el tiempo según lo que tarde en cargar el model-viewer
+    await new Promise(resolve => setTimeout(resolve, 10000)); // Ajusta el tiempo según lo que tarde en cargar el model-viewer
     
     console.log(`Modelo cargado`);
 
@@ -45,7 +45,7 @@ app.get('/render', async (req, res) => {
     res.set('Content-Type', 'image/png');
     res.send(screenshot);
     
-    console.log(`Imagen generada`);
+    console.log(`Imagen generada`+screenshot);
   } catch (error) {
     console.error('Error al procesar la página:', error);
     res.status(500).send('Ocurrió un error al procesar la página.');
