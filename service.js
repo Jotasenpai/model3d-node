@@ -24,8 +24,19 @@ app.get('/render', async (req, res) => {
     //page.setDefaultNavigationTimeout(60000);
 
     // Navega a la URL proporcionada
-    await page.goto(url); // Espera a que la página cargue completamente
-    //await page.goto(url, { timeout: 0, waitUntil: 'networkidle2' }); // Espera a que la página cargue completamente
+    //await page.goto(url); // Espera a que la página cargue completamente
+    const response = await page.goto(url, { timeout: 0, waitUntil: 'networkidle2' }); // Espera a que la página cargue completamente
+    // Verificar la respuesta del servidor PHP
+    if (response.status() === 200) {
+      const responseText = await page.evaluate(() => document.body.innerText);
+      if (responseText.trim() === 'OK') {
+        console.log('El script PHP finalizó correctamente.');
+      } else {
+        console.error('El script PHP no devolvió "OK". Respuesta:', responseText);
+      }
+    } else {
+      console.error('Error al ejecutar el script PHP. Código de estado:', response.status());
+    }
 
     // Espera un tiempo para que el JavaScript (como el model-viewer) se ejecute
     //await new Promise(resolve => setTimeout(resolve, 10000)); // Ajusta el tiempo según lo que tarde en cargar el model-viewer
