@@ -42,7 +42,7 @@ app.get('/render', async (req, res) => {
     console.log(`He cerrado el navegador`);
 
     // Devuelve la captura de pantalla como respuesta
-    res.set('Content-Type', 'image/png');
+    res.set('Content-Type', 'image/jpeg');
     res.send(screenshot);
     
     console.log(`Imagen generada`+screenshot);
