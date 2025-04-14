@@ -35,8 +35,8 @@ app.get('/render', async (req, res) => {
     await browser.close();
 
     // Devuelve la captura de pantalla como respuesta
-    //res.set('Content-Type', 'image/jpeg');
-    //res.send(screenshot);
+    res.set('Content-Type', 'text/html');
+    res.send('OK');
     
   } catch (error) {
     console.error('Error al procesar la página:', error);
