@@ -20,6 +20,7 @@ app.get('/render', async (req, res) => {
       });
       
     const page = await browser.newPage();
+    page.setDefaultNavigationTimeout(60000);
 
     // Navega a la URL proporcionada
     console.log(`Cargando la página: ${url}`);
