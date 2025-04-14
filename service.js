@@ -46,6 +46,8 @@ app.get('/render', async (req, res) => {
       });
     });
 
+    await new Promise(resolve => setTimeout(resolve, 700));
+
     // Captura una captura de pantalla de la página
     const screenshot = await page.screenshot({
       clip: { x: 0, y: 0, width: 800, height: 696 } // Ajusta el tamaño según sea necesario
