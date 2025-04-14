@@ -30,15 +30,15 @@ app.get('/render', async (req, res) => {
     await new Promise(resolve => setTimeout(resolve, 10000)); // Ajusta el tiempo según lo que tarde en cargar el model-viewer
 
     // Opcional: Captura una captura de pantalla de la página
-    //const screenshot = await page.screenshot({ fullPage: true });
+    const screenshot = await page.screenshot({ fullPage: true });
 
     // Cierra el navegador
     await browser.close();
 
     // Devuelve la captura de pantalla como respuesta
-    res.status(200).send('Página cargada correctamente');
-    //res.set('Content-Type', 'image/png');
-    //res.send(screenshot);
+    //res.status(200).send('Página cargada correctamente');
+    res.set('Content-Type', 'image/png');
+    res.send(screenshot);
     
   } catch (error) {
     console.error('Error al procesar la página:', error);
